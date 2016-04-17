@@ -1,0 +1,27 @@
+一、 整合 SSH 的基本步骤
+
+	1.  加入 Spring
+		<1>. 加入需要的 jar 包
+		<2>. 配置web.xml 文件
+		<3>. 加入 Spring 的配置文件 
+	
+	2. 	加入 Hibernate
+		
+		<1>. 建立持久化类和对应的 .hbm.xml 文件 ，生成对应的数据表
+		<2>. Spring 整合 Hibernate
+		<3>. 步骤
+			① 加入 jar 包
+			
+			② 在类路径下加入 hibernate.cfg.xml 文件，在其中配置 hibernate 的基本属性
+			
+			③ 建立持久化类，和其对应的 .hbm.xml 文件
+			
+			④ 和 Spring 进行整合
+				i.  加入 c3p0 和 MySQL 的驱动
+				ii. 在 Spring 的配置文件中配置: 数据源, SessionFactory, 声明式事务
+				
+			⑤ 启动项目, 会看到生成对应的数据表
+		
+		
+	3. 加入 Struts2
+	4. 完成功能
