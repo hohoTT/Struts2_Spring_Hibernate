@@ -27,15 +27,19 @@
 				<td>BIRTH</td>
 				<td>CREATETIME</td>
 				<td>DEPT</td>
+				<td>DELETE</td>
 			</tr>
 			<s:iterator value="#request.employees">
 				<tr>
-					<td>${id }</td>
-					<td>${lastName }</td>
-					<td>${email }</td>
-					<td>${birth }</td>
-					<td>${createTime }</td>
-					<td>${department.departmentName }</td>
+					<td>${ id }</td>
+					<td>${ lastName }</td>
+					<td>${ email }</td>
+					<td>${ birth }</td>
+					<td>${ createTime }</td>
+					<td>${ department.departmentName }</td>
+					<td>
+						<a href="emp-delete?id=${ id }" class="delete">Delete</a>
+					</td>
 				</tr>
 			</s:iterator>
 		</table>

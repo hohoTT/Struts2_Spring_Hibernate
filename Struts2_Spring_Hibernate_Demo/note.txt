@@ -41,13 +41,19 @@
 	4. 完成功能
 
 		<1>. 获取所有的员工信息: 若在 Dao 中只查询 Employee 的信息, 
-		而且 Employee 和 Department 还是使用的懒加载. 页面上还需要显示员工信息, 
-		此时会出现懒加载异常, 代理对象不能被初始化: 
-			org.hibernate.LazyInitializationException: 
-				could not initialize proxy - no Session
+			而且 Employee 和 Department 还是使用的懒加载. 页面上还需要显示员工信息, 
+			此时会出现懒加载异常, 代理对象不能被初始化: 
+				org.hibernate.LazyInitializationException: 
+					could not initialize proxy - no Session
 				
 			解决:
 				① 打开懒加载: 不推荐使用
 				② 获取 Employee 时使用 迫切左外连接同时初始化其关联的 Department 对象. 
 				③ 使用 OpenSessionInViewFilter: 后面再提.
+				
+		<2>. 删除员工信息: 
+		
+			①. 正常删除, 返回值需要是 redirect 类型, 而且重定向到 emp-list
+			②. 确定要删除吗? 的提示使用 jQuery 完成
+			③. Ajax 的使用参见 struts-2.3.15.3-all/struts-2.3.15.3/docs/WW/docs/ajax.html
 	

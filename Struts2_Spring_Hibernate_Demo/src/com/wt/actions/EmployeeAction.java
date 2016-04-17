@@ -15,10 +15,25 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 	
 	private EmployeeService employeeService;
 	
+	private Map<String, Object> request;
+	
+	private Integer id;
+	
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
+	public String delete(){
+		
+		employeeService.delete(id);
+		
+		return SUCCESS;
+	}
+	
 	public String list() {
 
 		List<Employee> employees = employeeService.getAll();
@@ -34,9 +49,6 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 		
 		return "list";
 	}
-
-	private Map<String, Object> request;
-	
 	
 	@Override
 	public void setRequest(Map<String, Object> request) {

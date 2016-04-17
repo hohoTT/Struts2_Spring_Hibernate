@@ -26,4 +26,11 @@ public class EmployeeDao {
 		return getSession().createQuery(hql).list();
 	}
 
+	public void delete(Integer id){
+		
+		String hql = "DELETE FROM Employee e WHERE e.id = ?";
+		getSession().createQuery(hql).setInteger(0, id).executeUpdate();
+		
+	}
+	
 }

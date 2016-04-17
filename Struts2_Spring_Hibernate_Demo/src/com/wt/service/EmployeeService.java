@@ -13,6 +13,10 @@ public class EmployeeService {
 		this.employeeDao = employeeDao;
 	}
 	
+	public void delete(Integer id){
+		employeeDao.delete(id);
+	}
+	
 	public List<Employee> getAll() {
 		List<Employee> employees = employeeDao.getAll();
 		
