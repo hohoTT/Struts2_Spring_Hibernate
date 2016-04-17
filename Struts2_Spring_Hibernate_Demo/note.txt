@@ -39,3 +39,15 @@
 				class 属性指向该 Action 在 IOC 中的 id
 		
 	4. 完成功能
+
+		<1>. 获取所有的员工信息: 若在 Dao 中只查询 Employee 的信息, 
+		而且 Employee 和 Department 还是使用的懒加载. 页面上还需要显示员工信息, 
+		此时会出现懒加载异常, 代理对象不能被初始化: 
+			org.hibernate.LazyInitializationException: 
+				could not initialize proxy - no Session
+				
+			解决:
+				① 打开懒加载: 不推荐使用
+				② 获取 Employee 时使用 迫切左外连接同时初始化其关联的 Department 对象. 
+				③ 使用 OpenSessionInViewFilter: 后面再提.
+	

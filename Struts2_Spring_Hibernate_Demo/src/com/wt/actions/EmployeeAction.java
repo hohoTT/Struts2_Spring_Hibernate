@@ -4,13 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
-import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.wt.entities.Employee;
 import com.wt.service.EmployeeService;
 
-public class EmployeeAction extends ActionSupport implements RequestAware, SessionAware{
+public class EmployeeAction extends ActionSupport implements RequestAware{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -38,18 +37,10 @@ public class EmployeeAction extends ActionSupport implements RequestAware, Sessi
 
 	private Map<String, Object> request;
 	
-	private Map<String, Object> session;
 	
 	@Override
-	public void setRequest(Map<String, Object> arg0) {
-		this.request = arg0;
+	public void setRequest(Map<String, Object> request) {
+		this.request = request;
 	}
-
-	@Override
-	public void setSession(Map<String, Object> arg0) {
-		this.session = arg0;
-		
-	}
-	
 	
 }

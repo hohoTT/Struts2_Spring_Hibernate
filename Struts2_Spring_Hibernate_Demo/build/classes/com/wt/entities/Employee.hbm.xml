@@ -27,6 +27,8 @@
         </property>
         
         <!-- 映射单项 n-1 的关联关系 -->
+        <!-- 其中可以进行懒加载异常的设置，只需设置属性lazy="false"即可 -->
+        <!-- 但是这种的方法会影响数据库的性能，使得数据的查询操作变得复杂以及频繁 -->
         <many-to-one name="department" class="com.wt.entities.Department">
             <column name="DEPARTMENT_ID" />
         </many-to-one>

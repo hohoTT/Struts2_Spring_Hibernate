@@ -14,7 +14,12 @@ public class EmployeeService {
 	}
 	
 	public List<Employee> getAll() {
-		return employeeDao.getAll();
+		List<Employee> employees = employeeDao.getAll();
+		
+		// 以下的操作实现了将查询出来的集合进行清空，此时前段的显示信息为 --- 没有任何员工信息 
+//		employees.clear();
+		
+		return employees;
 	}
 	
 }
