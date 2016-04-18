@@ -34,6 +34,8 @@ ModelDriven<Employee>, Preparable{
 	
 	private Employee model;
 	
+	private String lastName;
+	
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
@@ -44,6 +46,21 @@ ModelDriven<Employee>, Preparable{
 	
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	public String validateLastName() throws UnsupportedEncodingException{
+	
+		if(employeeService.lastNameIsValid(lastName)){
+			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8")); 
+		}else{
+			inputStream = new ByteArrayInputStream("0".getBytes("UTF-8")); 
+		}
+		
+		return "ajax-success";
 	}
 	
 	public String save() {
@@ -88,7 +105,7 @@ ModelDriven<Employee>, Preparable{
 			}
 		}
 		
-		return "delete";
+		return "ajax-success";
 	}
 	
 	public String list() {

@@ -27,7 +27,7 @@
         	
         	<result name="list">/WEB-INF/views/emp-list.jsp</result>
         	
-        	<result name="delete" type="stream">
+        	<result name="ajax-success" type="stream">
 		        <param name="contentType">text/html</param>
 		        <param name="inputName">inputStream</param>
 		    </result>
