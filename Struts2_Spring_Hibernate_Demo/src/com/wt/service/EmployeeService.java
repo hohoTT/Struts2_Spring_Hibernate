@@ -34,4 +34,8 @@ public class EmployeeService {
 		return employeeDao.getEmployeeByLastName(lastName) == null;
 	}
 	
+	public Employee get(Integer id) {
+		return employeeDao.get(id);
+	}
+	
 }

@@ -42,4 +42,7 @@ public class EmployeeDao extends BaseDao{
 		return employee;
 	}
 	
+	public Employee get(Integer id){
+		return (Employee) getSession().get(Employee.class, id);
+	}
 }

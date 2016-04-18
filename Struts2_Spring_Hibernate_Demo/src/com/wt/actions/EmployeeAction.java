@@ -86,6 +86,12 @@ ModelDriven<Employee>, Preparable{
 		
 		return INPUT;
 	}
+	
+	public void prepareInput() {
+		if(id != null){
+			model = employeeService.get(id);
+		}
+	}
 
 	public InputStream getInputStream() {
 		return inputStream;
