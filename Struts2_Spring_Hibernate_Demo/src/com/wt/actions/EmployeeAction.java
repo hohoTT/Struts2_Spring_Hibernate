@@ -1,5 +1,8 @@
 package com.wt.actions;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +22,8 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 	
 	private Integer id;
 	
+	private InputStream inputStream;
+	
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
@@ -27,11 +32,25 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 		this.id = id;
 	}
 
+	public InputStream getInputStream() {
+		return inputStream;
+	}
+
 	public String delete(){
 		
-		employeeService.delete(id);
+		try {
+			employeeService.delete(id);
+			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			}
+		}
 		
-		return SUCCESS;
+		return "delete";
 	}
 	
 	public String list() {

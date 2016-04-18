@@ -14,7 +14,11 @@
         	method="{1}">
         	
         	<result name="list">/WEB-INF/views/emp-list.jsp</result>
-        	<result name="success" type="redirect">/emp-list</result>
+        	
+        	<result name="delete" type="stream">
+		        <param name="contentType">text/html</param>
+		        <param name="inputName">inputStream</param>
+		    </result>
         	
         </action>
 		
