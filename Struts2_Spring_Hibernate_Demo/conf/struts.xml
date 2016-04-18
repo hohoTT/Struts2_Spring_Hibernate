@@ -19,6 +19,8 @@
 		        <param name="contentType">text/html</param>
 		        <param name="inputName">inputStream</param>
 		    </result>
+		    
+        	<result name="input">/WEB-INF/views/emp-input.jsp</result>
         	
         </action>
 		

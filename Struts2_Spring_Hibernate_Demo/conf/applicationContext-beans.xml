@@ -7,13 +7,22 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
+	<bean id="departmentDao" class="com.wt.dao.DepartmentDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 	<bean id="employeeService" class="com.wt.service.EmployeeService">
 		<property name="employeeDao" ref="employeeDao"></property>
+	</bean>
+	
+	<bean id="departmentService" class="com.wt.service.DepartmentServer">
+		<property name="departmentDao" ref="departmentDao"></property>
 	</bean>
 
 	<bean id="employeeAction" class="com.wt.actions.EmployeeAction"
 		  scope="prototype">
 		  <property name="employeeService" ref="employeeService"></property>
+		  <property name="departmentServer" ref="departmentService"></property>
 	</bean>
 
 </beans>

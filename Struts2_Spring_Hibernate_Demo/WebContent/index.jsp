@@ -11,6 +11,10 @@
 	<h1> Index Page hohoTT </h1><hr/>
 	
 	<a href="emp-list">List All Employee</a>
+	
+	<br/><br/>
+	
+	<a href="emp-input">Add New Employee</a>
 
 </body>
 </html>

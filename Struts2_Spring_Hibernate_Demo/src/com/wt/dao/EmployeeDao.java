@@ -7,17 +7,7 @@ import org.hibernate.SessionFactory;
 
 import com.wt.entities.Employee;
 
-public class EmployeeDao {
-	
-	private SessionFactory sessionFactory;
-	
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-	
-	public Session getSession() {
-		return this.sessionFactory.getCurrentSession();
-	}
+public class EmployeeDao extends BaseDao{
 	
 	public List<Employee> getAll(){
 		
@@ -29,6 +19,7 @@ public class EmployeeDao {
 	public void delete(Integer id){
 		
 		String hql = "DELETE FROM Employee e WHERE e.id = ?";
+		
 		getSession().createQuery(hql).setInteger(0, id).executeUpdate();
 		
 	}

@@ -9,7 +9,9 @@ import java.util.Map;
 import org.apache.struts2.interceptor.RequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.wt.entities.Department;
 import com.wt.entities.Employee;
+import com.wt.service.DepartmentServer;
 import com.wt.service.EmployeeService;
 
 public class EmployeeAction extends ActionSupport implements RequestAware{
@@ -17,6 +19,8 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 	private static final long serialVersionUID = 1L;
 	
 	private EmployeeService employeeService;
+	
+	private DepartmentServer departmentServer;
 	
 	private Map<String, Object> request;
 	
@@ -28,8 +32,21 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 		this.employeeService = employeeService;
 	}
 	
+	public void setDepartmentServer(DepartmentServer departmentServer) {
+		this.departmentServer = departmentServer;
+	}
+	
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String input(){
+		
+		List<Department> departments = departmentServer.getAll();
+		
+		request.put("departments", departments);
+		
+		return INPUT;
 	}
 
 	public InputStream getInputStream() {
