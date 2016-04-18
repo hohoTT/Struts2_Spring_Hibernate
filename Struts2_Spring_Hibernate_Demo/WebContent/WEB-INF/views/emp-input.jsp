@@ -60,7 +60,19 @@
 	<h1>Emp Input Page</h1><hr>
 	
 	<s:form action="emp-save" method="post">
-		<s:textfield name="lastName" label="LastName"></s:textfield>
+		<s:if test="id != null">
+			<s:textfield name="lastName" label="LastName" disabled="true"></s:textfield>
+			<s:hidden name="id"></s:hidden>
+			<%-- 
+			<!-- 通过添加隐藏域的方式把未显式提交的字段值提交到服务器 -->
+			<s:hidden name="lastName"></s:hidden>
+			<s:hidden name="createTime"></s:hidden>
+			--%>
+		</s:if>
+		<s:else>
+			<s:textfield name="lastName" label="LastName"></s:textfield>
+		</s:else>
+		
 		<s:textfield name="email" label="Email"></s:textfield>
 		<s:textfield name="birth" label="Birth"></s:textfield>
 		

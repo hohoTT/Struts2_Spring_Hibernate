@@ -67,14 +67,26 @@ ModelDriven<Employee>, Preparable{
 		
 		System.out.println(model);
 		
-		model.setCreateTime(new Date());
+		if(id == null){
+			model.setCreateTime(new Date());
+		}
+		
 		employeeService.saveOrUpdate(model);
 		
 		return SUCCESS;
 	}
 	
-	public void prepareSave() {
-		// 此时创建新的员工，为 model 创建新的对象，即为 model 进行初始化的赋值
+	/**
+	 * 可以根据 id 来判断为 save 方法准备的 model 是 new 的还是从数据库获取的!
+	 */
+	public void prepareSave(){
+//		if(id == null){
+//			// 此时创建新的员工，为 model 创建新的对象，即为 model 进行初始化的赋值
+//			model = new Employee();
+//		}else{
+//			model = employeeService.get(id);
+//		}
+		
 		model = new Employee();
 	}
 	
