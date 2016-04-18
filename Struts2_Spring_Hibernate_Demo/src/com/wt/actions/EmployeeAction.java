@@ -3,18 +3,22 @@ package com.wt.actions;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.Preparable;
 import com.wt.entities.Department;
 import com.wt.entities.Employee;
 import com.wt.service.DepartmentServer;
 import com.wt.service.EmployeeService;
 
-public class EmployeeAction extends ActionSupport implements RequestAware{
+public class EmployeeAction extends ActionSupport implements RequestAware,
+ModelDriven<Employee>, Preparable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -28,6 +32,8 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 	
 	private InputStream inputStream;
 	
+	private Employee model;
+	
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
@@ -38,6 +44,21 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 	
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String save() {
+		
+		System.out.println(model);
+		
+		model.setCreateTime(new Date());
+		employeeService.saveOrUpdate(model);
+		
+		return SUCCESS;
+	}
+	
+	public void prepareSave() {
+		// 此时创建新的员工，为 model 创建新的对象，即为 model 进行初始化的赋值
+		model = new Employee();
 	}
 	
 	public String input(){
@@ -89,6 +110,16 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 	@Override
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
+	}
+
+	@Override
+	public void prepare() throws Exception {}
+	
+	// 此时的 model 为一个 Employee 对象
+	@Override
+	public Employee getModel() {
+
+		return model;
 	}
 	
 }

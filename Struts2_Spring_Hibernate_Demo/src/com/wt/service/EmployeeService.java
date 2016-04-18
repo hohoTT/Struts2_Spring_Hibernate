@@ -13,6 +13,10 @@ public class EmployeeService {
 		this.employeeDao = employeeDao;
 	}
 	
+	public void saveOrUpdate(Employee employee){
+		employeeDao.saveOrUpdate(employee);
+	}
+	
 	public void delete(Integer id){
 		employeeDao.delete(id);
 	}

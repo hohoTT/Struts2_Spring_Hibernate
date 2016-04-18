@@ -24,4 +24,8 @@ public class EmployeeDao extends BaseDao{
 		
 	}
 	
+	public void saveOrUpdate(Employee employee){
+		getSession().saveOrUpdate(employee);
+	}
+	
 }
