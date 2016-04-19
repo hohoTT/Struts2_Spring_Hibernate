@@ -88,7 +88,10 @@
 						<s:date name="birth" format="yyyy-MM-dd"/>
 					</td>
 					<td>
-						<s:date name="createTime" format="yyyy-MM-dd hh:mm:ss"/>
+						<!-- 
+							<s:date name="createTime" format="yyyy-MM-dd hh:mm:ss"/>
+						 -->
+						 <s:date name="createTime" format="yyyy-MM-dd"/>
 					</td>
 					<td>${ department.departmentName }</td>
 					<td>
