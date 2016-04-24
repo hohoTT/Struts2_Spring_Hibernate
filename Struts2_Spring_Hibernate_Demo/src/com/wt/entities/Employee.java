@@ -70,6 +70,6 @@ public class Employee {
 				+ email + ", birth=" + birth + ", createTime=" + createTime
 				+ ", department.id=" + department + "]";
 	}
-
+	
 	
 }
